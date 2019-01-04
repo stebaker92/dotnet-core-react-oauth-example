@@ -27,7 +27,7 @@ class Login extends Component {
       mode: 'cors',
       cache: 'default'
     };
-    fetch(config.GOOGLE_AUTH_CALLBACK_URL, options)
+    fetch(config.GOOGLE_AUTH_CALLBACK_URL_BASE + "auth/google", options)
       .then(r => {
         r.json().then(user => {
           const token = user.token;
