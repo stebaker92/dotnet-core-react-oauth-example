@@ -56,3 +56,5 @@ yarn-error.log*
 /backend/msbuild.log
 /backend/msbuild.err
 /backend/msbuild.wrn
+
+.vs/

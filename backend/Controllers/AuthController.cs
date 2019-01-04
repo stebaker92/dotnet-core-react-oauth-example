@@ -42,6 +42,7 @@ namespace backend_test.Controllers
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, Security.Encrypt(AppSettings.appSettings.JwtEmailEncryption,user.email)),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim("and_level", "5"),
                 };
 
                 var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AppSettings.appSettings.JwtSecret));
@@ -50,7 +51,7 @@ namespace backend_test.Controllers
                 var token = new JwtSecurityToken(String.Empty,
                   String.Empty,
                   claims,
-                  expires: DateTime.Now.AddSeconds(55*60),
+                  expires: DateTime.Now.AddMinutes(55),
                   signingCredentials: creds);
                 return Ok(new
                 {
