@@ -1,7 +1,5 @@
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using backend_test.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
@@ -15,15 +13,8 @@ namespace backend_test.Controllers
     [Route("api/v1/[controller]")]
     public class DataController : Controller
     {
-        private IAuthService _authService;
-
-        public DataController(IAuthService authService)
-        {
-            this._authService = authService;
-        }
-
         [HttpGet("secure-data")]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
             // TODO - abstract this out
             var token = Request.Headers["Authorization"]
