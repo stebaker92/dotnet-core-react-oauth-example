@@ -17,6 +17,9 @@ class Login extends Component {
       console.error("Unable to get tokenId from Google", response)
       return;
     }
+    
+    console.log("Verifiying Google's tokenId against our API...")
+
     const tokenBlob = new Blob([JSON.stringify({ tokenId: response.tokenId }, null, 2)], { type: 'application/json' });
     const options = {
       method: 'POST',
